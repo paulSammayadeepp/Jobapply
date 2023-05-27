@@ -1,0 +1,63 @@
+
+$mainFont: 'SUIT';
+
+
+$colorEB: #EBEBEB;
+$colorFF: #FFFFFF;
+$color82: #828282;
+$color33: #333333;
+$color3D: #251E3D;
+$colorBD: #BDBDBD;
+$colorE0: #E0E0E0;
+$color66: #666666;
+$color3F: #DF1B3F;
+$color00: #FEE500;
+$color5A: #03C75A;
+$color19: #191919;
+$colorCF: #CFCFCF;
+$colorFA: #FAFAFA;
+$color48: #E95048;
+$colorB2: #F2A4B2;
+$colorA4: #A4A4A4;
+$color18: #181818;
+$colorF2: #F2F2F2;
+$color4C: #4C4C4C;
+$color9D: #9D9D9D;
+$color1F: #221E1F;
+$colorF9: #F9F9F9;
+$colorD9: #F9D1D9;
+$colorED: #2F80ED;
+$color8C: #EC768C;
+$color000: #000000;
+
+$themes: (
+    small: (
+        size14: 14px,
+        size16: 16px,
+        size12: 12px,
+        size18: 18px,
+        size11: 11px,
+        size10: 10px,
+        size24: 24px,
+        size20: 20px,
+        size15: 15px,
+        size13: 13px,
+        size8: 8px,
+        btn-padding:4px 10px,
+    ),
+
+    large: (
+        size14: calc(14px + 4px),
+        size16: calc(16px + 4px),
+        size12: calc(12px + 4px),
+        size18: calc(18px + 4px),
+        size11: calc(11px + 4px),
+        size10: calc(10px + 4px),
+        size24: calc(24px + 4px),
+        size20: calc(20px + 4px),
+        size15: calc(15px + 4px),
+        size13: calc(13px + 4px),
+        size8: calc(8px + 4px),
+        btn-padding:4px 10px,        
+    )
+);
