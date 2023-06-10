@@ -44,28 +44,24 @@
                     </div>
                     <div class="group">
                       <label class="check-input">
-                        <input type="radio" name="Careerradio" value="job_seeker" id="jobSeeker"
+                        <input type="radio" name="user_type" value="job_seeker" id="jobSeeker"
                           formControlName="user_type" />
                         <span class="text" for="jobSeeker">Job Seeker</span>
                       </label>
                       <label class="check-input">
-                        <input type="radio" name="Careerradio" value="recruiter" id="recruiter"
+                        <input type="radio" name="user_type" value="recruiter" id="recruiter"
                           formControlName="user_type" />
                         <span class="text" for="recruiter">Recruiter</span>
                       </label>
                     </div>
-                    <!-- loginForm is : {{emailError | json}} -->
-                    <!-- <small *ngIf="errors && errors?.password" class="error-msgsign">{{
-                          errors?.password
-                        }}</small> -->
                   </div>
                   <input type="submit" value="Submit" class="btn btn-primary lg" />
                 </form>
               </div>
             </div>
-            <!-- <div class="login-bottom-nav">
+            <div class="login-bottom-nav">
                   <ul>
-                    <li>
+                    <!-- <li>
                       <a hre="{ name: 'FindEmailAuthenticate' }"
                         >이메일찾기</a
                       >
@@ -74,14 +70,14 @@
                       <a hre="{ name: 'ForgotPassword' }"
                         >비밀번호 찾기</a
                       >
-                    </li>
+                    </li> -->
                     <li>
-                      <a hre="{ name: 'SelectMembershipType' }"
-                        >회원가입</a
+                      <a routerLink="../register"
+                        >Register Now</a
                       >
                     </li>
                   </ul>
-                </div> -->
+                </div>
             <!-- sns login -->
             <!-- <div class="reg-btn">
                   <button class="btn btn-secondary lg" @click="mbKakaoLogin">

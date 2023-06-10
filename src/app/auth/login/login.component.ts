@@ -9,7 +9,6 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-  error!: {};
 
   constructor(private _authService: AuthService) {}
 
