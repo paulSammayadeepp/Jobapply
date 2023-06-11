@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { checkStringMatch } from 'src/app/validators/matchString';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,7 +17,8 @@ import { checkStringMatch } from 'src/app/validators/matchString';
 export class SignUpComponent implements OnInit {
   step1 = true;
   signUpForm!: FormGroup;
-  constructor() {}
+
+  constructor(private route:ActivatedRoute,private router:Router) {}
 
   ngOnInit(): void {
     
@@ -35,16 +37,17 @@ export class SignUpComponent implements OnInit {
           email: new FormControl('', [Validators.required, Validators.email]),
           password: new FormControl('', [
             Validators.required,
+         
             Validators.pattern(
               /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/
             ),
           ]),
-          confirmPassword: new FormControl('', [
-            Validators.required,
-            Validators.pattern(
-              /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/
-            ),
-          ]),
+          // confirmPassword: new FormControl('', [
+          //   Validators.required,
+          //   Validators.pattern(
+          //     /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/
+          //   ),
+          // ]),
           gender: new FormControl('', Validators.required),
           postal_code: new FormControl('', Validators.required),
           address: new FormControl('', Validators.required),
@@ -69,16 +72,23 @@ export class SignUpComponent implements OnInit {
   }
 
   checkStep1() {
-    console.log('step-one', typeof this.stepOneName?.value);
+    // console.log('step-one', typeof this.stepOneName?.value);
     if (this.signUpForm.controls.stepOne.valid) {
       this.step1 = false;
     } else {
       this.signUpForm.controls.stepOne.markAllAsTouched();
     }
-    console.log(this.signUpForm);
+    console.log(this.signUpForm.value.stepOne);
   }
 
   finalSubmit() {
-    console.log(this.signUpForm);
+    console.log('hi')
+    console.log(this.signUpForm.value.stepTwo);
+    if(this.signUpForm.controls.stepTwo.valid){
+      this.router.navigate(['/home']);
+    }else{
+      this.signUpForm.controls.stepTwo.markAllAsTouched()
+    }
+   
   }
 }

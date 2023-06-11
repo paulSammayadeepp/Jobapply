@@ -19,7 +19,7 @@
             <!-- <a href="javascript:void(0);" class="login-logo"><img src="./assets/login-logo.svg" alt="" /></a> -->
             <div class="form-wrapper">
                 <div class="cm-top-space">
-                    <form [formGroup]="signUpForm" (ngSubmit)="finalSubmit()">
+                    <form [formGroup]="signUpForm">
                         <div class="step-type"> {{step1 ? 'step 1' : 'step 2'}}</div>
                         <div class="form-container" *ngIf="step1; then Step1 else Step2"></div>
                         <ng-template #Step1>
@@ -64,10 +64,12 @@
                                 <div class="group">
                                     <input type="email" class="form-control" placeholder="email"
                                         formControlName="email" />
+                                        <small class="error-msgsign" *ngIf="signUpForm.get('stepTwo.email') && signUpForm.get('stepTwo.email')?.errors?.['required'] && signUpForm.get('stepTwo.email')?.touched">Please Enter a email</small>
                                 </div>
                                 <div class="group">
                                     <input type="password" class="form-control" placeholder="password"
                                         formControlName="password" />
+                                        <small class="error-msgsign" *ngIf="signUpForm.get('stepTwo.password') && signUpForm.get('stepTwo.password')?.errors?.['required'] && signUpForm.get('stepTwo.password')?.touched && signUpForm.get('stepTwo.password')?.hasError('pattern')">Please Enter a password</small>
                                 </div>
                                 <div class="group">
                                     <label class="check-input">
@@ -86,7 +88,7 @@
                                         formControlName="postal_code" />
                                 </div>
                             </div>
-                            <input type="submit" value="Submit" class="btn btn-primary lg" />
+                            <input type="submit" value="Submit" class="btn btn-primary lg" (click)="finalSubmit()" />
                         </ng-template>
 
 
