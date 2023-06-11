@@ -19,6 +19,7 @@ export class SignUpComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    
     this.signUpForm = new FormGroup({
       stepOne: new FormGroup({
         name: new FormControl('', Validators.required),
@@ -29,22 +30,35 @@ export class SignUpComponent implements OnInit {
           Validators.maxLength(10),
         ]),
       }),
-      stepTwo: new FormGroup({
-        email: new FormControl('', [Validators.required, Validators.email]),
-        password: new FormControl('', [
-          Validators.required,
-          Validators.pattern(
-            /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/
-          ),
-        ]),
-        confirmPassword: new FormControl('', [
-          Validators.required,
-          Validators.pattern(
-            /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/
-          ),
-        ]),
-      },[checkStringMatch("password","confirmPassword")]),
+      stepTwo: new FormGroup(
+        {
+          email: new FormControl('', [Validators.required, Validators.email]),
+          password: new FormControl('', [
+            Validators.required,
+            Validators.pattern(
+              /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/
+            ),
+          ]),
+          confirmPassword: new FormControl('', [
+            Validators.required,
+            Validators.pattern(
+              /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/
+            ),
+          ]),
+          gender: new FormControl('', Validators.required),
+          postal_code: new FormControl('', Validators.required),
+          address: new FormControl('', Validators.required),
+        },
+        [checkStringMatch('password', 'confirmPassword')]
+      ),
     });
+  }
+
+  get stepOneName() {
+    return this.signUpForm.get('stepOne.phone');
+  }
+  get stepTwoError() {
+    return this.signUpForm.get('stepTwo');
   }
 
   passwordMatchValidator(frm: FormGroup) {
@@ -55,7 +69,12 @@ export class SignUpComponent implements OnInit {
   }
 
   checkStep1() {
-    this.step1 = false;
+    console.log('step-one', typeof this.stepOneName?.value);
+    if (this.signUpForm.controls.stepOne.valid) {
+      this.step1 = false;
+    } else {
+      this.signUpForm.controls.stepOne.markAllAsTouched();
+    }
     console.log(this.signUpForm);
   }
 
