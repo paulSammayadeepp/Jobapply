@@ -1,0 +1,102 @@
+<div :class="`back-wh`">
+    <!-- <button @click="popClose(true, closeSelf())">Close</button> -->
+    <div class="top-hdr top-hdr-new">
+        <div class="container">
+            <h4 class="heading">
+                Sign-up
+                <!-- <a class="cross-arrow"
+              ><img src="./assets/icons/cross-icon2.svg" alt=""
+            /></a> -->
+            </h4>
+            <!-- Inner Header Section -->
+            <!-- <InnerHeader headerTitle="로그인" /> -->
+            <!--  -->
+        </div>
+    </div>
+    <div class="container">
+        <div class="form-wrapper-login">
+
+            <!-- <a href="javascript:void(0);" class="login-logo"><img src="./assets/login-logo.svg" alt="" /></a> -->
+            <div class="form-wrapper">
+                <div class="cm-top-space">
+                    <form [formGroup]="signUpForm" (ngSubmit)="finalSubmit()">
+                        <div class="step-type"> {{step1 ? 'step 1' : 'step 2'}}</div>
+                        <div class="form-container" *ngIf="step1; then Step1 else Step2"></div>
+                        <ng-template #Step1>
+                            <div class="form-group" formGroupName="stepOne">
+                                <div class="group">
+                                    <input type="text" class="form-control" placeholder="name" formControlName="name" />
+                                    <!-- <small *ngIf="emailError && emailError.errors?.['required'] && emailError.touched"
+                                                      class="error-msgsign">
+                                                       Please enter a email
+                                                      </small> -->
+                                </div>
+
+                                <div class="group">
+                                    <input type="date" class="form-control" placeholder="age" formControlName="age" />
+                                    <!-- <small *ngIf="passwordError && passwordError.errors?.['required'] && passwordError.touched"
+                                                      class="error-msgsign">Please enter a password</small> -->
+                                </div>
+
+                                <div class="group">
+                                    <input type="number" class="form-control" placeholder="phone number"
+                                        formControlName="phone" />
+                                </div>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-primary lg" (click)="checkStep1()">
+                                    Submit Step-1
+                                </button>
+                            </div>
+                        </ng-template>
+                        <ng-template #Step2>
+                            <div class="form-group" formGroupName="stepTwo">
+                                <div class="group">
+                                    <input type="email" class="form-control" placeholder="email" formControlName="email" />
+                                </div>
+                                <div class="group">
+                                    <input type="password" class="form-control" placeholder="password" formControlName="password" />
+                                </div>
+                                <div class="group">
+                                    <input type="password" class="form-control" placeholder="confirm password" formControlName="confirmPassword" />
+                                </div>
+                                <div class="group">
+                                    <input type="text" class="form-control" placeholder="address" />
+                                    <input type="text" class="form-control" placeholder="zip Code" />
+                                </div>
+                            </div>
+                            <input type="submit" value="Submit" class="btn btn-primary lg" />
+                        </ng-template>
+
+
+                        <!-- <div class="group">
+                                            <label class="check-input">
+                                            <input type="radio" name="user_type" value="job_seeker" id="jobSeeker"
+                                                formControlName="user_type" />
+                                            <span class="text" for="jobSeeker">Job Seeker</span>
+                                            </label>
+                                        </div> -->
+
+                    </form>
+                </div>
+            </div>
+            <div class="login-bottom-nav">
+                <ul>
+                    <!-- <li>
+                                    <a hre="{ name: 'FindEmailAuthenticate' }"
+                                    >이메일찾기</a
+                                    >
+                                </li>
+                                <li>
+                                    <a hre="{ name: 'ForgotPassword' }"
+                                    >비밀번호 찾기</a
+                                    >
+                                </li> -->
+                    <li>
+                        <a routerLink="../login">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,67 +1,67 @@
 <div :class="`back-wh ${commonstore.state.currentThemeStore}`">
-    <!-- <button @click="popClose(true, closeSelf())">Close</button> -->
-    <div class="top-hdr top-hdr-new">
-      <div class="container">
-        <h4 class="heading">
-          login
-          <!-- <a class="cross-arrow"
+  <!-- <button @click="popClose(true, closeSelf())">Close</button> -->
+  <div class="top-hdr top-hdr-new">
+    <div class="container">
+      <h4 class="heading">
+        login
+        <!-- <a class="cross-arrow"
             ><img src="./assets/icons/cross-icon2.svg" alt=""
           /></a> -->
-        </h4>
-        <!-- Inner Header Section -->
-        <!-- <InnerHeader headerTitle="로그인" /> -->
-        <!--  -->
-      </div>
+      </h4>
+      <!-- Inner Header Section -->
+      <!-- <InnerHeader headerTitle="로그인" /> -->
+      <!--  -->
     </div>
-    <div class="container">
-      <div class="form-wrapper-login">
-        <div class="login-tab">
-          <div class="tab-outr">
-            <div class="login-tab-cont">
-                <a href="javascript:void(0);" class="login-logo"
-                  ><img src="./assets/login-logo.svg" alt=""
-                /></a>
-                <div class="form-wrapper">
-                  <div class="cm-top-space">
-                    <form>
-                      <div class="form-group">
-                        <div class="mb-16">
-                          <div
-                            class="group"
-                          >
-                            <input
-                              type="email"
-                              class="form-control"
-                              placeholder="Email"
-                              
-                              style="text-transform: lowercase"
-                            />
-                          </div>
-                          <!-- <small v-if="errors && errors?.email" class="error-msgsign">{{
-                            errors?.email
-                          }}</small> -->
-                        </div>
-                        <div
-                          class="group"
-                        >
-                          <input
-                            type="password"
-                            class="form-control"
-                            placeholder="password"
-                         
-                          />
-                        </div>
-                        <!-- <small v-if="errors && errors?.password" class="error-msgsign">{{
-                          errors?.password
-                        }}</small> -->
-                      </div>
-                      <input type="submit" value="Submit" class="btn btn-primary lg" />
-                    </form>
+  </div>
+  <div class="container">
+    <div class="form-wrapper-login">
+      <div class="login-tab">
+        <div class="tab-outr">
+          <div class="login-tab-cont">
+            <a href="javascript:void(0);" class="login-logo"><img src="./assets/login-logo.svg" alt="" /></a>
+            <div class="form-wrapper">
+              <div class="cm-top-space">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+
+                    <div class="group">
+                      <input type="email" class="form-control" placeholder="email" formControlName="email"
+                        style="text-transform: lowercase" />
+                      <small *ngIf="emailError && emailError.errors?.['required'] && emailError.touched"
+                        class="error-msgsign">
+                        Please enter a email
+                      </small>
+                      <small *ngIf="emailError && emailError.errors?.['email'] && emailError.touched"
+                        class="error-msgsign">
+                        Please enter a valid email
+                      </small>
+                    </div>
+
+                    <div class="group">
+                      <input type="password" class="form-control" placeholder="password" formControlName="password" />
+                      <small *ngIf="passwordError && passwordError.errors?.['required'] && passwordError.touched"
+                        class="error-msgsign">Please enter a password</small>
+                    </div>
+                    <div class="group">
+                      <label class="check-input">
+                        <input type="radio" name="user_type" value="job_seeker" id="jobSeeker"
+                          formControlName="user_type" />
+                        <span class="text" for="jobSeeker">Job Seeker</span>
+                      </label>
+                      <label class="check-input">
+                        <input type="radio" name="user_type" value="recruiter" id="recruiter"
+                          formControlName="user_type" />
+                        <span class="text" for="recruiter">Recruiter</span>
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <!-- <div class="login-bottom-nav">
+                  <input type="submit" value="Submit" class="btn btn-primary lg" />
+                </form>
+              </div>
+            </div>
+            <div class="login-bottom-nav">
                   <ul>
-                    <li>
+                    <!-- <li>
                       <a hre="{ name: 'FindEmailAuthenticate' }"
                         >이메일찾기</a
                       >
@@ -70,16 +70,16 @@
                       <a hre="{ name: 'ForgotPassword' }"
                         >비밀번호 찾기</a
                       >
-                    </li>
+                    </li> -->
                     <li>
-                      <a hre="{ name: 'SelectMembershipType' }"
-                        >회원가입</a
+                      <a routerLink="/register"
+                        >Register Now</a
                       >
                     </li>
                   </ul>
-                </div> -->
-                <!-- sns login -->
-                <!-- <div class="reg-btn">
+                </div>
+            <!-- sns login -->
+            <!-- <div class="reg-btn">
                   <button class="btn btn-secondary lg" @click="mbKakaoLogin">
                     <em><img src="@/assets/icons/chat-icon.svg" alt="" /></em>
                     카카오 로그인
@@ -101,9 +101,9 @@
                     Apple로 계속하기
                   </button>
                 </div> -->
-              </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
