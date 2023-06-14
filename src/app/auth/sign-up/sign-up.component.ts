@@ -19,15 +19,14 @@ export class SignUpComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    
     this.signUpForm = new FormGroup({
       stepOne: new FormGroup({
         name: new FormControl('', Validators.required),
         age: new FormControl('', Validators.required),
         phone: new FormControl('', [
           Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(10),
+          Validators.min(1000000000),
+          Validators.max(9999999999),
         ]),
       }),
       stepTwo: new FormGroup(
@@ -39,12 +38,7 @@ export class SignUpComponent implements OnInit {
               /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/
             ),
           ]),
-          confirmPassword: new FormControl('', [
-            Validators.required,
-            Validators.pattern(
-              /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/
-            ),
-          ]),
+          confirmPassword: new FormControl('', [Validators.required]),
           gender: new FormControl('', Validators.required),
           postal_code: new FormControl('', Validators.required),
           address: new FormControl('', Validators.required),
@@ -61,12 +55,12 @@ export class SignUpComponent implements OnInit {
     return this.signUpForm.get('stepTwo');
   }
 
-  passwordMatchValidator(frm: FormGroup) {
-    return frm.controls['newPassword'].value ===
-      frm.controls['repeatNewPassword'].value
-      ? null
-      : { mismatch: true };
-  }
+  // passwordMatchValidator(frm: FormGroup) {
+  //   return frm.controls['newPassword'].value ===
+  //     frm.controls['repeatNewPassword'].value
+  //     ? null
+  //     : { mismatch: true };
+  // }
 
   checkStep1() {
     console.log('step-one', typeof this.stepOneName?.value);
@@ -80,5 +74,10 @@ export class SignUpComponent implements OnInit {
 
   finalSubmit() {
     console.log(this.signUpForm);
+    if (this.signUpForm.controls.stepTwo.valid) {
+      console.log('final submit');
+    } else {
+      this.signUpForm.controls.stepTwo.markAllAsTouched();
+    }
   }
 }

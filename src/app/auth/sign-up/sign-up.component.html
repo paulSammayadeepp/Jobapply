@@ -64,55 +64,79 @@
                                 <div class="group">
                                     <input type="email" class="form-control" placeholder="email"
                                         formControlName="email" />
+                                    <small *ngIf="signUpForm.get('stepTwo.email') && signUpForm.get('stepTwo.email')?.hasError('required')
+                                        && signUpForm.get('stepTwo.email')?.touched" class="error-msgsign">
+                                        Please enter a email
+                                    </small>
+                                    <small *ngIf="signUpForm.get('stepTwo.email') && signUpForm.get('stepTwo.email')?.hasError('email')
+                                        && signUpForm.get('stepTwo.email')?.touched" class="error-msgsign">
+                                        Please enter a valid email
+                                    </small>
                                 </div>
                                 <div class="group">
                                     <input type="password" class="form-control" placeholder="password"
                                         formControlName="password" />
+                                    <small *ngIf="signUpForm.get('stepTwo.password') && signUpForm.get('stepTwo.password')?.hasError('required')
+                                        && signUpForm.get('stepTwo.password')?.touched" class="error-msgsign">
+                                        Please enter a password
+                                    </small>
+                                    <small *ngIf="signUpForm.get('stepTwo.password') && signUpForm.get('stepTwo.password')?.hasError('pattern')
+                                        && signUpForm.get('stepTwo.password')?.touched" class="error-msgsign">
+                                        Please enter a valid password
+                                    </small>
+                                </div>
+                                <div class="group">
+                                    <input type="password" class="form-control" placeholder="confirm password"
+                                        formControlName="confirmPassword" />
+                                    <small *ngIf="signUpForm.get('stepTwo.confirmPassword') && signUpForm.get('stepTwo.confirmPassword')?.hasError('required')
+                                        && signUpForm.get('stepTwo.confirmPassword')?.touched" class="error-msgsign">
+                                        Please enter a password
+                                    </small>
+                                    <small *ngIf="signUpForm.get('stepTwo.confirmPassword') && signUpForm.get('stepTwo.confirmPassword')?.hasError('pattern')
+                                        && signUpForm.get('stepTwo.confirmPassword')?.touched" class="error-msgsign">
+                                        Please enter a valid password
+                                    </small>
+                                    <small *ngIf="signUpForm.get('stepTwo') && signUpForm.get('stepTwo')?.hasError('misMatchError')
+                                        && signUpForm.get('stepTwo.confirmPassword')?.touched" class="error-msgsign">
+                                        Confirm Password doesn't match with Password
+                                    </small>
                                 </div>
                                 <div class="group">
                                     <label class="check-input">
                                         <input type="radio" name="gender" value="male" formControlName="gender" />
-                                        <span class="text" for="jobSeeker">Job Seeker</span>
+                                        <span class="text" for="jobSeeker">Male</span>
                                     </label>
                                     <label class="check-input">
                                         <input type="radio" name="gender" value="female" formControlName="gender" />
-                                        <span class="text" for="recruiter">Recruiter</span>
+                                        <span class="text" for="recruiter">Female</span>
                                     </label>
+                                    <small *ngIf="signUpForm.get('stepTwo.gender') && signUpForm.get('stepTwo.gender')?.hasError('required')
+                                        && signUpForm.get('stepTwo.gender')?.touched" class="error-msgsign">
+                                        Please enter a valid gender
+                                    </small>
                                 </div>
                                 <div class="group">
                                     <input type="text" class="form-control" placeholder="address"
                                         formControlName="address" />
+                                    <small *ngIf="signUpForm.get('stepTwo.address') && signUpForm.get('stepTwo.address')?.hasError('required')
+                                        && signUpForm.get('stepTwo.address')?.touched" class="error-msgsign">
+                                        Please enter a valid address
+                                    </small>
                                     <input type="text" class="form-control" placeholder="zip Code"
                                         formControlName="postal_code" />
+                                    <small *ngIf="signUpForm.get('stepTwo.postal_code') && signUpForm.get('stepTwo.postal_code')?.hasError('required')
+                                        && signUpForm.get('stepTwo.postal_code')?.touched" class="error-msgsign">
+                                        Please enter a valid postal code
+                                    </small>
                                 </div>
                             </div>
                             <input type="submit" value="Submit" class="btn btn-primary lg" />
                         </ng-template>
-
-
-                        <!-- <div class="group">
-                                            <label class="check-input">
-                                            <input type="radio" name="user_type" value="job_seeker" id="jobSeeker"
-                                                formControlName="user_type" />
-                                            <span class="text" for="jobSeeker">Job Seeker</span>
-                                            </label>
-                                        </div> -->
-
                     </form>
                 </div>
             </div>
             <div class="login-bottom-nav">
                 <ul>
-                    <!-- <li>
-                                    <a hre="{ name: 'FindEmailAuthenticate' }"
-                                    >이메일찾기</a
-                                    >
-                                </li>
-                                <li>
-                                    <a hre="{ name: 'ForgotPassword' }"
-                                    >비밀번호 찾기</a
-                                    >
-                                </li> -->
                     <li>
                         <a routerLink="../login">Login</a>
                     </li>
