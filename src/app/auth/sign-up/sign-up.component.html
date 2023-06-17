@@ -64,7 +64,6 @@
                                 <div class="group">
                                     <input type="email" class="form-control" placeholder="email"
                                         formControlName="email" />
-<<<<<<< HEAD
                                     <small *ngIf="signUpForm.get('stepTwo.email') && signUpForm.get('stepTwo.email')?.hasError('required')
                                         && signUpForm.get('stepTwo.email')?.touched" class="error-msgsign">
                                         Please enter a email
@@ -73,14 +72,10 @@
                                         && signUpForm.get('stepTwo.email')?.touched" class="error-msgsign">
                                         Please enter a valid email
                                     </small>
-=======
-                                        <small class="error-msgsign" *ngIf="signUpForm.get('stepTwo.email') && signUpForm.get('stepTwo.email')?.errors?.['required'] && signUpForm.get('stepTwo.email')?.touched">Please Enter a email</small>
->>>>>>> 950b08fa74687b449b4eb01f891a53a63cc9d24a
                                 </div>
                                 <div class="group">
                                     <input type="password" class="form-control" placeholder="password"
                                         formControlName="password" />
-<<<<<<< HEAD
                                     <small *ngIf="signUpForm.get('stepTwo.password') && signUpForm.get('stepTwo.password')?.hasError('required')
                                         && signUpForm.get('stepTwo.password')?.touched" class="error-msgsign">
                                         Please enter a password
@@ -105,9 +100,6 @@
                                         && signUpForm.get('stepTwo.confirmPassword')?.touched" class="error-msgsign">
                                         Confirm Password doesn't match with Password
                                     </small>
-=======
-                                        <small class="error-msgsign" *ngIf="signUpForm.get('stepTwo.password') && signUpForm.get('stepTwo.password')?.errors?.['required'] && signUpForm.get('stepTwo.password')?.touched && signUpForm.get('stepTwo.password')?.hasError('pattern')">Please Enter a password</small>
->>>>>>> 950b08fa74687b449b4eb01f891a53a63cc9d24a
                                 </div>
                                 <div class="group">
                                     <label class="check-input">

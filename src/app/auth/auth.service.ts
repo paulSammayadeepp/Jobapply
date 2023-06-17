@@ -7,11 +7,17 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
+  token = localStorage.getItem('token');
 
   setLogin(loginData: any): Observable<any> {
-    return this.http.post(
-      '/user/login',
-      loginData,
-    );
+    return this.http.post('/user/login', loginData);
+  }
+
+  isLoggedIn() {
+    return this.token !== undefined;
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
   }
 }
