@@ -12,7 +12,7 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('./resume/resume.module').then((e) => e.ResumeModule),
+          import('./resume/resume.module').then((m) => m.ResumeModule),
       },
     ],
   },

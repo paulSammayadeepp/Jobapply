@@ -5,7 +5,7 @@ import { ResumeRoutingModule } from './resume-routing.module';
 import { ResumeComponent } from './resume.component';
 import { ListComponent } from './list/list.component';
 import { CreateComponent } from './create/create.component';
-import { DetailsComponent } from './details/details.component';
+import { DetailComponent } from './detail/detail.component';
 
 
 @NgModule({
@@ -13,7 +13,7 @@ import { DetailsComponent } from './details/details.component';
     ResumeComponent,
     ListComponent,
     CreateComponent,
-    DetailsComponent
+    DetailComponent
   ],
   imports: [
     CommonModule,

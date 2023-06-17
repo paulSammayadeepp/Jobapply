@@ -8,6 +8,8 @@ import { AuthModule } from './auth/auth.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { InterceptorService } from './services/api-interceptor.service';
 import { AuthService } from './auth/auth.service';
+import { PagesModule } from './pages/pages.module';
+
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { AuthService } from './auth/auth.service';
     AppRoutingModule,
     SharedModule,
     AuthModule,
+    PagesModule,
     HttpClientModule
   ],
   providers: [

@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ResumeComponent } from './resume.component';
 import { ListComponent } from './list/list.component';
 import { CreateComponent } from './create/create.component';
-import { DetailsComponent } from './details/details.component';
-import { ResumeModule } from './resume.module';
+import { DetailComponent } from './detail/detail.component';
 
 const routes: Routes = [
   {
     path: 'resume',
-    component: ResumeModule,
+    component: ResumeComponent,
     children: [
-      { path: 'list', component: ListComponent },
-      { path: 'create/:type/:id?', component: CreateComponent },
-      { path: 'details/:id', component: DetailsComponent },  
-    ],
-  },
+      {path: 'list', component: ListComponent},
+      {path: 'create/:type', component: CreateComponent},
+      {path: 'details/:id', component: DetailComponent},
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class ResumeRoutingModule {}
+export class ResumeRoutingModule { }
