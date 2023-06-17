@@ -7,7 +7,14 @@ const routes: Routes = [
   {
     path: '',
     component: PagesComponent,
-    children: [{ path: 'home', component: HomeComponent }],
+    children: [
+      { path: 'home', component: HomeComponent },
+      {
+        path: '',
+        loadChildren: () =>
+          import('./resume/resume.module').then((e) => e.ResumeModule),
+      },
+    ],
   },
 ];
 

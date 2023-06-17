@@ -3,20 +3,27 @@
         <div class="container">
             <div class="hdr-innr">
                 <div class="left">
-                    <a href="#" class="is_read noti-icon"><img src="./assets/icons/notification-icon.svg" alt="" />
-                        <span></span></a>
+                    <span>Logo</span>
                 </div>
                 <div class="middle">
-                    <a href="#" class="logo"><img src="./assets/images/logo.svg" alt="" /></a>
+                    <ul>
+                        <li><a routerLink="./home" routerLinkActive="active-link">Home</a></li>
+                        <li><a routerLink="./resume/list" routerLinkActive="active-link">Resume</a></li>
+                        <li>
+                            <a routerLink="/register"
+                              >Register Now</a
+                            >
+                          </li>
+                    </ul>
                 </div>
                 <div class="right">
                     <ul>
-                        <li>
+                        <!-- <li>
                             <a href="#">
                                 <img src="./assets/icons/eye-blk.svg" alt="" />
-                                <!-- <Vue3Lottie :animationData="EyesJSON" :height="24" :width="24" /> -->
+                                <Vue3Lottie :animationData="EyesJSON" :height="24" :width="24" />
                             </a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="#"><img src="./assets/icons/user-blk.svg" alt="" /></a>
                         </li>
