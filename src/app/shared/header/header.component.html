@@ -7,26 +7,21 @@
                 </div>
                 <div class="middle">
                     <ul>
-                        <li><a routerLink="/home" routerLinkActive="active-link">Home</a></li>
-                        <li><a routerLink="/resume/list" routerLinkActive="active-link">Resume</a></li>
-                        <li>
-                            <a routerLink="/register"
-                              >Register Now</a
-                            >
-                          </li>
+                        <li><a routerLink="/home" routerLinkActive="active-link" class="router-link">Home</a></li>
+                        <li><a routerLink="/resume/list" routerLinkActive="active-link" class="router-link">Resume</a></li>
                     </ul>
                 </div>
                 <div class="right">
                     <ul>
-                        <!-- <li>
-                            <a href="#">
-                                <img src="./assets/icons/eye-blk.svg" alt="" />
-                                <Vue3Lottie :animationData="EyesJSON" :height="24" :width="24" />
-                            </a>
-                        </li> -->
-                        <li>
-                            <a href="#"><img src="./assets/icons/user-blk.svg" alt="" /></a>
+                        <li *ngIf="token; else loginBlock">
+                            <a href="#" class="mr-2"><img src="./assets/icons/user-blk.svg" alt="" /></a>
+                            <button type="button" class="btn btn-warn rounded" (click)="setLogout()">Logout</button>
+                            <!-- {{token | json}} -->
                         </li>
+                        <ng-template #loginBlock>
+                            <a class="btn btn-primary" routerLink="/login">login</a>
+                        </ng-template>
+
                     </ul>
                 </div>
             </div>

@@ -61,7 +61,26 @@ body{
       background-color: rgb(34, 121, 235);
       color: #f7f7f7;
     }
+    &.btn-warn {
+      background-color: rgb(230, 94, 31);
+      color: #f7f7f7;
+    }
+    &.rounded {
+      border-radius: 6px;
+    }
     &.lg {
       width: 100%;
     } 
   }  
+  .mr-2{
+    margin-right: 8px;
+  }
+
+  .router-link{
+    color: #4b4242;
+    text-decoration: none;
+
+    &.active-link {
+      color: #d44242;
+    }
+  }

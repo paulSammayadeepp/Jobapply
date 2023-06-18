@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
       user_type: new FormControl('job_seeker', Validators.required),
-      login_type: new FormControl('general')
+      login_type: new FormControl('general'),
     });
   }
 
@@ -31,19 +31,18 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     console.log(this.loginForm);
-    if(this.loginForm.invalid){
-      alert("check form")
+    if (this.loginForm.invalid) {
+      alert('check form');
       return;
-    } 
-    else {
+    } else {
       console.log(this.loginForm.value);
       this._authService.setLogin(this.loginForm.value).subscribe((res) => {
         console.log(res);
-        localStorage.setItem('token',res.tokens.accessToken);
-        localStorage.setItem('userId', res.user_id)
-        this.router.navigate(["/home"])
-      })
-      
+        localStorage.setItem('token', res.tokens.accessToken);
+        localStorage.setItem('userId', res.user_id);
+        this._authService.setToken(res.tokens.accessToken);
+        this.router.navigate(['/home']);
+      });
     }
   }
 }
