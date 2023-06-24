@@ -1,1 +1,32 @@
-<p>list works!</p>
+<diV class="container">
+    <ng-template let-resumeEle="resume" #resumeCard>
+        <div class="Resume-wrapper">
+            <div class="document-list document-list-resume">
+                <p>
+                    <span class="btn btn-default red" v-if="item.is_default === 1">Default</span>
+                    <span class="btn btn-default" v-if="item.is_temporary === 1">Temporary</span>
+                    <b>Date</b>
+                </p>
+                <h4 class="mb-12">{{resumeEle.resume_title}}</h4>
+                <ul class="d-text-match">
+                    <li>
+                        <em>Work Places:</em> <span>Work Places</span>
+                    </li>
+                    <li>
+                        <em>Occupation:</em> <span>Occupation</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </ng-template>
+    {{resumeListArr | json}}
+    <ng-template *ngIf="resumeListArr.length > 0; else emptyBlock">
+        <div class="list" *ngFor="let resume of resumeListArr">
+            <ng-container [ngTemplateOutlet]="resumeCard" [ngTemplateOutletContext]="{resume}">
+            </ng-container>
+        </div>
+    </ng-template>
+    <ng-template #emptyBlock>
+        <p>No resume present</p>
+    </ng-template>
+</diV>

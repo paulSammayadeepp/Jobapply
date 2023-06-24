@@ -24,7 +24,7 @@ export class InterceptorService implements HttpInterceptor {
         'Content-Type': 'application/json',
         'Accept-Language': 'en',
         'x-api-key': `f4279730-f3f0-463b-bc4a-c1ad8bf10e5d`,
-        Authorization: `Bearer ${_authService.getToken()}`
+        Authorization: `Bearer ${localStorage.getItem('token')}`
       },
       // headers: new HttpHeaders({
       //   'Content-Type': 'application/json',

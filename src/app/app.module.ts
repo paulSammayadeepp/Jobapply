@@ -9,6 +9,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { InterceptorService } from './services/api-interceptor.service';
 import { AuthService } from './auth/auth.service';
 import { PagesModule } from './pages/pages.module';
+import { ResumeService } from './services/resume.service';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { PagesModule } from './pages/pages.module';
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true},
-    AuthService
+    AuthService,
+    ResumeService
   ],
   bootstrap: [AppComponent]
 })

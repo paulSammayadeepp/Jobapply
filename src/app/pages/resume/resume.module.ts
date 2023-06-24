@@ -6,6 +6,8 @@ import { ResumeComponent } from './resume.component';
 import { ListComponent } from './list/list.component';
 import { CreateComponent } from './create/create.component';
 import { DetailComponent } from './detail/detail.component';
+// import { ResumeService } from 'src/app/services/resume.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -17,7 +19,11 @@ import { DetailComponent } from './detail/detail.component';
   ],
   imports: [
     CommonModule,
-    ResumeRoutingModule
+    ResumeRoutingModule,
+    HttpClientModule
+  ],
+  providers: [
+    // ResumeService
   ]
 })
 export class ResumeModule { }

@@ -24,9 +24,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this._authservice.getToken().subscribe((d) => {
       this.token = d;
-      console.log(d);
+      // console.log(d);
       if (!d && !!localStorage.getItem('token')) {
-        console.log('checked', this._authservice.isLoggedIn());
+        // console.log('checked', this._authservice.isLoggedIn());
         this.token = localStorage.getItem('token') || '';
         this._authservice.setToken(this.token);
       }
