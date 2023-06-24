@@ -8,6 +8,7 @@ import {
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { Injectable, Injector } from '@angular/core';
+import { SignupService } from './signup.service';
 
 @Injectable()
 export class InterceptorService implements HttpInterceptor {
@@ -17,6 +18,7 @@ export class InterceptorService implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     let _authService = this.injector.get(AuthService);
+    let _signupService=this.injector.get(SignupService)
     // console.log('sending Request interceptor');
     let modifiedReq = req.clone({
       url: `https://insjb-api.dvconsulting.org/api/v1${req.url}`,
