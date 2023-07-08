@@ -8,6 +8,7 @@ import {
 import { AuthService } from '../auth.service';
 import { checkStringMatch } from 'src/app/validators/matchString';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SignupService } from 'src/app/services/signup.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,14 +19,18 @@ export class SignUpComponent implements OnInit {
   step1 = true;
   signUpForm!: FormGroup;
 
-  constructor(private route:ActivatedRoute,private router:Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private signupservice: SignupService
+  ) {}
 
   ngOnInit(): void {
     this.signUpForm = new FormGroup({
       stepOne: new FormGroup({
         name: new FormControl('', Validators.required),
         age: new FormControl('', Validators.required),
-        phone: new FormControl('', [
+        phone_number: new FormControl('', [
           Validators.required,
           Validators.min(1000000000),
           Validators.max(9999999999),
@@ -36,7 +41,7 @@ export class SignUpComponent implements OnInit {
           email: new FormControl('', [Validators.required, Validators.email]),
           password: new FormControl('', [
             Validators.required,
-         
+
             Validators.pattern(
               /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/
             ),
@@ -52,7 +57,7 @@ export class SignUpComponent implements OnInit {
   }
 
   get stepOneName() {
-    return this.signUpForm.get('stepOne.phone');
+    return this.signUpForm.get('stepOne.phone_number');
   }
   get stepTwoError() {
     return this.signUpForm.get('stepTwo');
@@ -76,9 +81,14 @@ export class SignUpComponent implements OnInit {
   }
 
   finalSubmit() {
+    let userobj={...this.signUpForm.value.stepOne,...this.signUpForm.value.stepTwo};
     console.log(this.signUpForm);
     if (this.signUpForm.controls.stepTwo.valid) {
-      console.log('final submit');
+      this.signupservice.setsignup(userobj).subscribe((res) => {
+        console.log(res);
+        
+        this.router.navigate(['/home']);
+      });
     } else {
       this.signUpForm.controls.stepTwo.markAllAsTouched();
     }
