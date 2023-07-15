@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ResumeService } from 'src/app/services/resume.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -7,8 +8,8 @@ import { ResumeService } from 'src/app/services/resume.service';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  constructor(private _resumeService: ResumeService) {}
-  resumeListArr!: [];
+  constructor(private _resumeService: ResumeService, private router: Router) {}
+  resumeListArr = [];
 
   ngOnInit(): void {
     this._resumeService.getResumeList().subscribe((res) => {
@@ -19,5 +20,9 @@ export class ListComponent implements OnInit {
 
   checkLength(): Boolean {
     return this.resumeListArr.length > 0;
+  }
+
+  redirectToAdd() {
+    this.router.navigate(['resume', 'create', 'add']);
   }
 }

@@ -10,11 +10,13 @@ import { InterceptorService } from './services/api-interceptor.service';
 import { AuthService } from './auth/auth.service';
 import { PagesModule } from './pages/pages.module';
 import { ResumeService } from './services/resume.service';
+// import { LocalDatePipe } from './pipes/local-date.pipe';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    // LocalDatePipe
   ],
   imports: [
     BrowserModule,

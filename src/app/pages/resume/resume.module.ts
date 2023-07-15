@@ -8,6 +8,7 @@ import { CreateComponent } from './create/create.component';
 import { DetailComponent } from './detail/detail.component';
 // import { ResumeService } from 'src/app/services/resume.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -15,12 +16,14 @@ import { HttpClientModule } from '@angular/common/http';
     ResumeComponent,
     ListComponent,
     CreateComponent,
-    DetailComponent
+    DetailComponent,
+    // LocalDatePipe,
   ],
   imports: [
     CommonModule,
     ResumeRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [
     // ResumeService
