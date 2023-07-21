@@ -24,7 +24,7 @@ export class InterceptorService implements HttpInterceptor {
       url: `https://insjb-api.dvconsulting.org/api/v1${req.url}`,
       setHeaders: {
         'Content-Type': 'application/json',
-        'Accept-Language': 'en',
+        'Accept-Language': 'ko',
         'x-api-key': `f4279730-f3f0-463b-bc4a-c1ad8bf10e5d`,
         Authorization: `Bearer ${localStorage.getItem('token')}`
       },

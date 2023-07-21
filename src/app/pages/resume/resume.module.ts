@@ -9,6 +9,7 @@ import { DetailComponent } from './detail/detail.component';
 // import { ResumeService } from 'src/app/services/resume.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     ResumeRoutingModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   providers: [
     // ResumeService

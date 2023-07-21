@@ -22,7 +22,14 @@ export class ListComponent implements OnInit {
     return this.resumeListArr.length > 0;
   }
 
-  redirectToAdd() {
-    this.router.navigate(['resume', 'create', 'add']);
+  redirectToAdd(id?: string) {
+    console.log(id);
+    if (id) {
+      this.router.navigate(['resume', 'create', 'edit'], {
+        queryParams: { pid: id },
+      });
+    } else {
+      this.router.navigate(['resume', 'create', 'add']);
+    }
   }
 }

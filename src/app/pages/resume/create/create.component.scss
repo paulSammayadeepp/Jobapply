@@ -1,54 +1,60 @@
-.list{
-    padding: 2rem 2.5rem 1rem;
-    max-width: 756px;
-    margin:  0 auto;
-    .Resume-wrapper{
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        padding: 16px 12px;
-    }
-    .d-text-match{
-        list-style: none;
-        padding-left: 0px;
-    }
+.list {
+  padding: 2rem 2.5rem 1rem;
+  max-width: 756px;
+  margin: 0 auto;
+  .Resume-wrapper {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px 12px;
+  }
+  .d-text-match {
+    list-style: none;
+    padding-left: 0px;
+  }
 }
-.header-title{
-    padding: 18px 0;
-    text-align: center;
-    font-size: 24px;
-    font-weight: 600;
+.header-title {
+  padding: 18px 0;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
 }
 
-.field-group{
-    margin: 10px 0 20px;
-    padding: 0 20px;
+.field-group {
+  margin: 10px 0 20px;
+  padding: 0 20px;
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .form-control {
+    width: 94%;
+    padding: 10px 20px;
+    border: 1px solid #4b4242;
+    border-radius: 5px;
+
+    &.select {
+      width: 100%;
+    }
+
+    &.ng-invalid {
+      &.ng-touched {
+        border: 1px solid rgb(248, 50, 50);
+      }
+    }
+  }
+  .horizontal {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
     label {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 16px;
-      font-weight: 600;
+      margin-right: 10px;
     }
-    .form-control{
-      width: 94%;
-      padding: 10px 20px;
-      border: 1px solid #4b4242;
-      border-radius: 5px;
-  
-      &.select{
-        width: 100%;
-      }
-    }
-    .horizontal {
-      display: flex;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      label{
-        margin-right: 10px;
-      }
     //   width: 100%;
-    }
   }
-  .form-submit{
-   padding: 0 20px;
-   margin-top: 30px;
-  }
+}
+.form-submit {
+  padding: 0 20px;
+  margin-top: 30px;
+}

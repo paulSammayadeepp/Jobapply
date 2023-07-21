@@ -15,9 +15,12 @@ export class ResumeService {
     return this.http.delete(`/resume/resume-delete?data=${id}`);
   }
   addResume(data: any): Observable<any> {
-    return this.http.post('resume/add-resume', data);
+    return this.http.post('/resume/add-resume', data);
   }
   editResume(id: string, data: any): Observable<any> {
-    return this.http.put(`resume/edit-resume/${id}`, data);
+    return this.http.put(`/resume/edit-resume/${id}`, data);
+  }
+  detailResume(id: string): Observable<any> {
+    return this.http.get(`/resume/resume-details/${id}`);
   }
 }

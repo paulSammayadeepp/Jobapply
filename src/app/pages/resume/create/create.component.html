@@ -1,155 +1,101 @@
 <diV class="container">
     <div class="list">
         <div class="Resume-wrapper">
-            <div class="header-title">Add Resume</div>
-            <form>
+            <div class="header-title">{{pageType}} Resume</div>
+            <form [formGroup]="ResumeForm" (submit)="finalSubmit()">
                 <div class="field-group">
                     <label>Title</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" formControlName="resume_title">
+                    <small
+                        *ngIf="ResumeForm.get('resume_title')?.hasError('required') && ResumeForm.get('resume_title')?.touched"
+                        class="error-msgsign">This is a required field</small>
                 </div>
                 <div class="field-group">
                     <label>Highest Education</label>
-                    <select class="form-control select">
-                        <option value="primary school">primary school</option>
-                        <option value="middle school">middle school</option>
-                        <option value="high school">high school</option>
-                        <option value="college">college</option>
-                        <option value="university">university</option>
-                        <option value="post graduate">post graduate</option>
+                    <select class="form-control select" formControlName="last_educational_background">
+                        <option [value]="career.value" *ngFor="let career of careers">{{career.name}}</option>
                     </select>
+                    <small
+                        *ngIf="ResumeForm.get('last_educational_background')?.hasError('required') && ResumeForm.get('last_educational_background')?.touched"
+                        class="error-msgsign">This is a required field</small>
                 </div>
                 <div class="field-group horizontal">
                     <label>Career</label>
                     <div class="horizontal">
                         <label>
-                            <input type="radio" value="newcomer" name="Careerradio">
+                            <input type="radio" value="newcomer" name="career_type" formControlName="career_type">
                             Fresher
                         </label>
                         <label>
-                            <input type="radio" value="experience" name="Careerradio">
+                            <input type="radio" value="experience" name="career_type" formControlName="career_type">
                             Experienced
                         </label>
                     </div>
-
+                    <small
+                        *ngIf="ResumeForm.get('career_type')?.hasError('required') && ResumeForm.get('career_type')?.touched"
+                        class="error-msgsign">This is a required field</small>
                 </div>
-                <div class="field-group ">
+                <div class="field-group">
                     <label>Desired Days</label>
                     <div class="horizontal">
-                        <label>
-                            <input type="checkbox" value="Mon-Fri" name="Dayscheckbox">
-                            Mon-Fri
-                        </label>
-                        <label>
-                            <input type="checkbox" value="Mon-Sat" name="Dayscheckbox">
-                            Mon-Sat
-                        </label>
-                        <label>
-                            <input type="checkbox" value="Mon-Sun" name="Dayscheckbox">
-                            Mon-Sun
-                        </label>
-                        <label>
-                            <input type="checkbox" value="Weekend" name="Dayscheckbox">
-                            Weekend
-                        </label>
-                        <label>
-                            <input type="checkbox" value="5 days a week" name="Dayscheckbox">
-                            5 days a week
-                        </label>
-                        <label>
-                            <input type="checkbox" value="4 days a week" name="Dayscheckbox">
-                            4 days a week
-                        </label>
-                        <label>
-                            <input type="checkbox" value="6 days a week" name="Dayscheckbox">
-                            6 days a week
-                        </label>
-                        <label>
-                            <input type="checkbox" value="Any day of week consultant" name="Dayscheckbox">
-                            Any day of week consultant
+                        <label *ngFor="let desiredDay of desiredDays; let i = index" formArrayName="working_days">
+                            <input type="checkbox" [value]="desiredDay.value" [formControlName]="i">
+                            {{desiredDay.name}}
                         </label>
                     </div>
+                    <small
+                        *ngIf="ResumeForm.get('working_days')?.hasError('required') && ResumeForm.get('working_days')?.touched"
+                        class="error-msgsign">This is a required field</small>
                 </div>
+
+                <!-- Checkbox values: {{ ResumeForm.controls.desired_days.value | json}} -->
 
                 <div class="field-group ">
                     <label>Desired Hours</label>
                     <div class="horizontal">
-                        <label>
-                            <input type="checkbox" value="Morning" name="Hourscheckbox">
-                            Morning
-                        </label>
-                        <label>
-                            <input type="checkbox" value="Afternoon" name="Hourscheckbox">
-                            Afternoon
-                        </label>
-                        <label>
-                            <input type="checkbox" value="Evening" name="Hourscheckbox">
-                            Evening
-                        </label>
-                        <label>
-                            <input type="checkbox" value="Dawn" name="Hourscheckbox">
-                            Dawn
-                        </label>
-                        <label>
-                            <input type="checkbox" value="All Day" name="Hourscheckbox">
-                            All Day
+                        <label *ngFor="let hour of desiredHours; let i = index" formArrayName="working_hours">
+                            <input type="checkbox" [value]="hour.value" [formControlName]="i">
+                            {{hour.name}}
                         </label>
                     </div>
+                    <small
+                        *ngIf="ResumeForm.get('working_hours')?.hasError('required') && ResumeForm.get('working_hours')?.touched"
+                        class="error-msgsign">This is a required field</small>
                 </div>
+
+                <!-- Checkbox values: {{ ResumeForm.controls.working_hours.value | json}} -->
 
                 <div class="field-group ">
                     <label>Desired Period</label>
                     <div class="horizontal">
-                        <label>
-                            <input type="checkbox" value="1 week to 1 month" name="Hourscheckbox">
-                            1 week to 1 month
-                        </label>
-                        <label>
-                            <input type="checkbox" value="1 to 3 months" name="Hourscheckbox">
-                            1 to 3 months
-                        </label>
-                        <label>
-                            <input type="checkbox" value="3 to 6 months" name="Hourscheckbox">
-                            3 to 6 months
-                        </label>
-                        <label>
-                            <input type="checkbox" value="6 to 12 months" name="Hourscheckbox">
-                            6 to 12 months
-                        </label>
-                        <label>
-                            <input type="checkbox" value="Over 1 year" name="Hourscheckbox">
-                            Over 1 year
+                        <label *ngFor="let period of desiredPeriods; let i = index" formArrayName="working_periods">
+                            <input type="checkbox" [value]="period.value" [formControlName]="i">
+                            {{period.name}}
                         </label>
                     </div>
+                    <small
+                        *ngIf="ResumeForm.get('working_periods')?.hasError('required') && ResumeForm.get('working_periods')?.touched"
+                        class="error-msgsign">This is a required field</small>
                 </div>
 
                 <div class="field-group ">
                     <label>Employment Type</label>
                     <div class="horizontal">
-                        <label>
-                            <input type="checkbox" value="Full Time" name="Employmentcheckbox">
-                            Full Time
-                        </label>
-                        <label>
-                            <input type="checkbox" value="Part Time" name="Employmentcheckbox">
-                            Part Time
-                        </label>
-                        <label>
-                            <input type="checkbox" value="Contract Worker" name="Employmentcheckbox">
-                            Contract Worker
-                        </label>
-                        <label>
-                            <input type="checkbox" value="Internship" name="Employmentcheckbox">
-                            Internship
-                        </label>
-                        <label>
-                            <input type="checkbox" value="Freelancer" name="Employmentcheckbox">
-                            Freelancer
+                        <label *ngFor="let empType of employmentType;let i = index" formArrayName="employment_type">
+                            <input type="checkbox" [value]="empType.value" [formControlName]="i">
+                            {{empType.name}}
                         </label>
                     </div>
+                    <small
+                        *ngIf="ResumeForm.get('employment_type')?.hasError('required') && ResumeForm.get('employment_type')?.touched"
+                        class="error-msgsign">This is a required field</small>
                 </div>
                 <div class="field-group">
                     <label>Self Intro</label>
-                    <textarea rows="6" class="form-control"></textarea>
+                    <textarea rows="6" class="form-control" formControlName="self_introduction"></textarea>
+                    <small
+                        *ngIf="ResumeForm.get('self_introduction')?.hasError('required') && ResumeForm.get('self_introduction')?.touched"
+                        class="error-msgsign">This is a required field</small>
                 </div>
 
                 <div class="form-submit">

@@ -1,7 +1,7 @@
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-export function checkStringMatch(str: string, toCheckWith: string) {
-  return function (form: AbstractControl) {
+export function checkStringMatch(str: string, toCheckWith: string): ValidatorFn {
+  return function (form: AbstractControl) : ValidationErrors | null {
     const checkStr = form.get(str);
     const checkWith = form.get(toCheckWith);
 
