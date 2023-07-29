@@ -1,0 +1,12 @@
+<app-custom-modal [width]="'250px'">
+    <div class="modal-head" dialogHeader>
+        Are You sure ?
+    </div>
+    <div class="body" dialogBody>
+        Your Data will be lost
+    </div>
+    <div class="footer" dialogFooter>
+        <button class="btn btn-info rounded mr-2" (click)="closeModal(false,false)">Continue</button>
+        <button class="btn btn-warn rounded" (click)="closeModal(false,true)">Okay</button>
+    </div>
+</app-custom-modal>

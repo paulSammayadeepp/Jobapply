@@ -10,12 +10,16 @@ import { InterceptorService } from './services/api-interceptor.service';
 import { AuthService } from './auth/auth.service';
 import { PagesModule } from './pages/pages.module';
 import { ResumeService } from './services/resume.service';
+import { SortPipe } from './pipes/sort.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
 // import { LocalDatePipe } from './pipes/local-date.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    SortPipe,
     // LocalDatePipe
   ],
   imports: [
@@ -24,7 +28,9 @@ import { ResumeService } from './services/resume.service';
     SharedModule,
     AuthModule,
     PagesModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true},

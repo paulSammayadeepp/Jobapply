@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ResumeService } from 'src/app/services/resume.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CheckboxRequired } from 'src/app/validators/checkboxRequired';
+
+export interface checkbox {
+  name: string,
+  value: string,
+}
 
 @Component({
   selector: 'app-create',
@@ -12,7 +17,8 @@ import { CheckboxRequired } from 'src/app/validators/checkboxRequired';
 export class CreateComponent implements OnInit {
   pageType = '';
   ResumeForm!: FormGroup;
-  careers = [
+  warningModal: boolean = false;
+  careers:checkbox[] = [
     {
       name: 'primary school',
       value: 'primary school',
@@ -39,7 +45,7 @@ export class CreateComponent implements OnInit {
     },
   ];
 
-  desiredDays = [
+  desiredDays:checkbox[] = [
     {
       name: 'Mon-Fri',
       value: 'Mon-Fri',
@@ -66,7 +72,7 @@ export class CreateComponent implements OnInit {
     },
   ];
 
-  desiredHours = [
+  desiredHours:checkbox[] = [
     {
       name: 'Morning',
       value: 'Morning',
@@ -89,7 +95,7 @@ export class CreateComponent implements OnInit {
     },
   ];
 
-  desiredPeriods = [
+  desiredPeriods:checkbox[] = [
     {
       name: '1 week to 1 month',
       value: '1 week to 1 month',
@@ -115,7 +121,7 @@ export class CreateComponent implements OnInit {
       value: "1 day"
     }
   ];
-  employmentType = [
+  employmentType:checkbox[] = [
     {
       name: 'Full Time',
       value: 'Full Time',
@@ -141,10 +147,11 @@ export class CreateComponent implements OnInit {
   constructor(
     private activeRoute: ActivatedRoute,
     private resumeService: ResumeService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
-  getValBoolean(arr: any[], checkArr: any[]): any[] {
+  getValBoolean(arr: checkbox[], checkArr: any[]): any[] {
     let retunArr: any[] = []
     arr.forEach((res) => {
       if (checkArr.includes(res.value)) {
@@ -209,7 +216,7 @@ export class CreateComponent implements OnInit {
     });
   }
 
-  getValueArr(arr: [], checkArr: any[]): any[] {
+  getValueArr(arr: [], checkArr: checkbox[]): any[] {
     return arr
       .map((value, i) => value && checkArr[i].value)
       .filter((val) => !!val);
@@ -259,6 +266,13 @@ export class CreateComponent implements OnInit {
     } else {
       console.log('not valid');
       this.ResumeForm.markAllAsTouched();
+    }
+  }
+
+  WarnModalStatus(event: any) {
+    this.warningModal = event.status;
+    if(event.redirectState) {
+      this.router.navigate(['resume','list'])
     }
   }
 }

@@ -10,6 +10,7 @@ import { DetailComponent } from './detail/detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { WarningModalComponent } from './create/warning-modal/warning-modal.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ListComponent,
     CreateComponent,
     DetailComponent,
+    WarningModalComponent,
     // LocalDatePipe,
   ],
   imports: [

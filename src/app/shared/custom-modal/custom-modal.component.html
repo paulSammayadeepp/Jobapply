@@ -1,0 +1,13 @@
+<div class="overlay">
+    <div class="custom-modal" [style.width]="ModalWidth">
+        <div class="modal-header">
+            <ng-content select="[dialogHeader]"></ng-content>
+        </div>
+        <div class="modal-body">
+            <ng-content select="[dialogBody]"></ng-content>
+        </div>
+        <div class="modal-footer">
+            <ng-content select="[dialogFooter]"></ng-content>
+        </div>
+    </div>
+</div>

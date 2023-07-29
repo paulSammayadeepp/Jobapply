@@ -1,6 +1,9 @@
 <diV class="container">
     <div class="list">
         <div class="Resume-wrapper">
+            <div>
+                <button class="btn btn-warn" (click)="warningModal = true"> Go Back </button>
+            </div>
             <div class="header-title">{{pageType}} Resume</div>
             <form [formGroup]="ResumeForm" (submit)="finalSubmit()">
                 <div class="field-group">
@@ -105,3 +108,6 @@
         </div>
     </div>
 </diV>
+<ng-template [ngIf]="warningModal">
+    <app-warning-modal (modalEmit)="WarnModalStatus($event)"></app-warning-modal>
+</ng-template>
