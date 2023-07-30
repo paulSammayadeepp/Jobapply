@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ResumeService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
+  private TotalOccupationFilter = new BehaviorSubject<Occupation[]>([])
 
   getResumeList(): Observable<any> {
     return this.http.get(`/resume/resume-list`);
@@ -23,4 +24,10 @@ export class ResumeService {
   detailResume(id: string): Observable<any> {
     return this.http.get(`/resume/resume-details/${id}`);
   }
+}
+
+export interface Occupation {
+  occupation_first: number,
+  occupation_second: number,
+  occupation_third: number[]
 }

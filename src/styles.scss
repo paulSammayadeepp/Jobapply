@@ -96,6 +96,9 @@ body {
     font-size: 18px;
     padding: 12px 16px;
   }
+  &.circle {
+    border-radius: 50px;
+  }
 }
 .mr-2 {
   margin-right: 8px;

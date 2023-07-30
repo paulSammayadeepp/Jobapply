@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { WarningModalComponent } from './create/warning-modal/warning-modal.component';
+import { OccupationModalComponent } from './create/occupation-modal/occupation-modal.component';
+import { WorkplaceModalComponent } from './create/workplace-modal/workplace-modal.component';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { WarningModalComponent } from './create/warning-modal/warning-modal.comp
     CreateComponent,
     DetailComponent,
     WarningModalComponent,
+    OccupationModalComponent,
+    WorkplaceModalComponent,
     // LocalDatePipe,
   ],
   imports: [

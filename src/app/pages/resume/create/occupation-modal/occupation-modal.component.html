@@ -1,0 +1,58 @@
+<app-custom-modal [width]="'650px'">
+    <div class="modal-head" dialogHeader>
+        <h3>Occupation Setting</h3>
+        <div class="cross">
+            <button type="button" class="btn circle btn-warn" (click)="closeModal(false)">
+                <b>x</b>
+            </button>
+        </div>
+    </div>
+    <div class="body" dialogBody>
+        <div class="table">
+            <div class="table-column">
+                <div class="table-head">
+                    <span>Primary Tab</span>
+                </div>
+                <div class="table-data">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="table-column">
+                <div class="table-head">
+                    <span>Secondary Tab</span>
+                </div>
+                <div class="table-data">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="table-column">
+                <div class="table-head">
+                    <span>Tertiary Tab</span>
+                </div>
+                <div class="table-data">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="heading">
+            <h3 class="sub-heading mb-0">Selected Filters</h3>
+        </div>
+        <div class="selected-list">
+            <ul class="filters">
+                <li class="selected-filter">
+                    filter name
+                    <span>x</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer" dialogFooter>
+        <button class="btn btn-warn rounded lg">Set Occupation</button>
+    </div>
+</app-custom-modal>

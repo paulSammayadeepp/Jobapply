@@ -111,3 +111,6 @@
 <ng-template [ngIf]="warningModal">
     <app-warning-modal (modalEmit)="WarnModalStatus($event)"></app-warning-modal>
 </ng-template>
+<ng-template [ngIf]="true">
+    <app-occupation-modal></app-occupation-modal>
+</ng-template>
